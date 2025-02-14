@@ -9,16 +9,16 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface GoalDao {
-    @Query("SELECT * FROM Goal")
-    fun getAllGoals(): Flow<List<Goal>>
+interface TaskDao {
+    @Query("SELECT * FROM Task")
+    fun getAllTasks(): Flow<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertGoal(goal: Goal)
+    suspend fun insertTask(task: Task)
 
     @Delete
-    suspend fun deleteGoal(goal: Goal)
+    suspend fun deleteTask(task: Task)
 
     @Update
-    suspend fun updateGoal(goal: Goal)
+    suspend fun updateTask(task: Task)
 }

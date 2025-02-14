@@ -20,20 +20,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.ipsolutions.pathfinder.data.Goal
+import com.ipsolutions.pathfinder.data.Task
 
 @Composable
-fun GoalItem(goal: Goal, onUpdateProgress: (Goal, Int) -> Unit, onDelete: (Goal) -> Unit) {
+fun TaskItem(task: Task, onUpdateProgress: (Task, Int) -> Unit, onDelete: (Task) -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth().padding(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(goal.title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+            Text(task.title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
             Spacer(modifier = Modifier.height(4.dp))
             LinearProgressIndicator(
-                progress = goal.progress / 100f,
+                progress = task.progress / 100f,
                 modifier = Modifier.fillMaxWidth(),
                 color = MaterialTheme.colorScheme.primary
             )
@@ -42,7 +42,7 @@ fun GoalItem(goal: Goal, onUpdateProgress: (Goal, Int) -> Unit, onDelete: (Goal)
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                IconButton(onClick = { onDelete(goal) }) {
+                IconButton(onClick = { onDelete(task) }) {
                     Icon(imageVector = Icons.Default.Delete, contentDescription = "Eliminar", tint = Color.Red)
                 }
             }

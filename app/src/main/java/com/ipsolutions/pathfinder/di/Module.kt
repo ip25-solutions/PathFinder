@@ -3,7 +3,7 @@ package com.ipsolutions.pathfinder.di
 import android.content.Context
 import androidx.room.Room
 import com.ipsolutions.pathfinder.data.AppDatabase
-import com.ipsolutions.pathfinder.data.GoalDao
+import com.ipsolutions.pathfinder.data.TaskDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +24,5 @@ object AppModule {
         ).build()
 
     @Provides
-    fun provideGoalDao(database: AppDatabase): GoalDao = database.goalDao()
+    fun provideTaskDao(database: AppDatabase): TaskDao = database.taskDao()
 }

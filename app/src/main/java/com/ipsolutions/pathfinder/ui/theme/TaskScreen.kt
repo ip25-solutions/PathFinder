@@ -1,7 +1,6 @@
 package com.ipsolutions.pathfinder.ui.theme
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,7 +21,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -42,8 +40,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GoalScreen(viewModel: GoalViewModel = hiltViewModel()) {
-    val goals by viewModel.goals.collectAsState()
+fun TaskScreen(viewModel: TaskState = hiltViewModel()) {
+    val tasks by viewModel.task.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     var showDialog by remember { mutableStateOf(false) }
 
@@ -75,14 +73,14 @@ fun GoalScreen(viewModel: GoalViewModel = hiltViewModel()) {
                         .padding(16.dp) // Ajusta el padding según lo necesites
                 ) {
                     Text(
-                        text = "Tus Metas",
+                        text = "Tareas ",
                         style = MaterialTheme.typography.headlineMedium,
                         color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.padding(16.dp)
                     )
                     LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
-                        items(goals) { goal ->
-                            GoalItem(goal, viewModel::updateGoalProgress, viewModel::deleteGoal)
+                        items(tasks) { goal ->
+                            TaskItem(goal, viewModel::updateTaskProgress, viewModel::deleteTask)
                         }
                     }
                 }
@@ -96,7 +94,7 @@ fun GoalScreen(viewModel: GoalViewModel = hiltViewModel()) {
 
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            title = { Text("Nueva Meta") },
+            title = { Text("Nueva Tarea") },
             text = {
                 Column {
                     TextField(
@@ -117,7 +115,7 @@ fun GoalScreen(viewModel: GoalViewModel = hiltViewModel()) {
             confirmButton = {
                 Button(onClick = {
                     coroutineScope.launch {
-                        viewModel.addGoal(newGoalTitle, newGoalDescription)
+                        viewModel.addTask(newGoalTitle, newGoalDescription)
                     }
                     showDialog = false
                 }) {
