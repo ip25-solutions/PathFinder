@@ -1,4 +1,4 @@
-package com.ipsolutions.pathfinder.ui.theme
+package com.ipsolutions.pathfinder.ui.theme.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

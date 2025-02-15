@@ -11,9 +11,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.room.Room
 import com.ipsolutions.pathfinder.data.AppDatabase
 import com.ipsolutions.pathfinder.repository.TaskRepository
-import com.ipsolutions.pathfinder.repository.GoalViewModelFactory
-import com.ipsolutions.pathfinder.ui.theme.TaskScreen
-import com.ipsolutions.pathfinder.ui.theme.TaskState
+import com.ipsolutions.pathfinder.repository.TaskFactory
+import com.ipsolutions.pathfinder.ui.theme.screen.TaskScreen
+import com.ipsolutions.pathfinder.ui.theme.viewmodel.TaskState
 import com.ipsolutions.pathfinder.ui.theme.PathFinderTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
             AppDatabase::class.java, "goal_database"
         ).build()
         val repository = TaskRepository(database.taskDao())
-        val viewModelFactory = GoalViewModelFactory(repository)
+        val viewModelFactory = TaskFactory(repository)
         setContent {
             PathFinderTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->

@@ -14,6 +14,7 @@ roomCommon = "2.6.1"
 roomKtx = "2.6.1"
 lifecycleViewmodelCompose = "2.6.2"
 hilt-navigation-compose = "1.0.0"
+composeRuntimeVersion = "1.7.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +37,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "composeRuntimeVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

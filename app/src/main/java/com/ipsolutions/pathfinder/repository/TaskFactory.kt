@@ -2,9 +2,9 @@ package com.ipsolutions.pathfinder.repository
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.ipsolutions.pathfinder.ui.theme.TaskState
+import com.ipsolutions.pathfinder.ui.theme.viewmodel.TaskState
 
-class GoalViewModelFactory(private val repository: TaskRepository) : ViewModelProvider.Factory {
+class TaskFactory(private val repository: TaskRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TaskState::class.java)) {
             @Suppress("UNCHECKED_CAST")
